@@ -83,10 +83,10 @@ func TestComplex(t *testing.T) {
 	mux := http.NewServeMux()
 
 	s := NewStorage(mux, "test", []string{}, true)
-	go func() { s.Run() }()
+	s.Run()
 
 	r := NewRouter(mux, [][]string{{"test"}})
-	go func() { r.Run() }()
+	r.Run()
 
 	t.Cleanup(r.Stop)
 	t.Cleanup(s.Stop)
